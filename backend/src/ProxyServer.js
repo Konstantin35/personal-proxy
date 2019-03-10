@@ -27,7 +27,7 @@ class ProxyServer {
   }
 
   listen() {
-    const { port } = ProxyServer;
+    const port = process.env.PORT;
     this.app.listen(port, token => {
       if (token) {
         console.log('Listening to port ' + port);
@@ -49,9 +49,6 @@ class ProxyServer {
       });
   }
 }
-
-
-ProxyServer.port = 8080;
 
 
 module.exports = ProxyServer;
