@@ -1,16 +1,19 @@
 {
   "name": "uproxy",
   "version": "1.0.0",
-  "description": "russia RCN",
+  "description": "Progressive Russians for free Internet and against the https://rkn.gov.ru/",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index"
   },
   "keywords": [
-    "VPN"
+    "Russia",
+    "USSR",
+    "VPN",
+    "proxy",
+    "rkn"
   ],
-  "author": "Roman",
+  "author": "Roman Lezhnin",
   "license": "ISC",
   "dependencies": {
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v15.4.0"
