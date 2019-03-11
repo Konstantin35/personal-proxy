@@ -1,5 +1,3 @@
-const https = require('http'); // TODO: https!
-const uws = require('uWebSockets.js/uws.js');
 /*
 *   @see
 *   https://github.com/uNetworking/uWebSockets.js
@@ -7,8 +5,8 @@ const uws = require('uWebSockets.js/uws.js');
 */
 class ProxyServer {
 
-  constructor(options) {
-    this.app = uws.App();
+  constructor(app) {
+    this.app = app;
   }
 
 
@@ -27,10 +25,10 @@ class ProxyServer {
   }
 
   listen() {
-    const port = process.env.PORT;
+    const { port } = this;
     this.app.listen(port, token => {
       if (token) {
-        console.log('Listening to port ' + port);
+        console.log(this.constructor.name + port);
       } else {
         console.log('Failed to listen to port ' + port);
       }
@@ -38,7 +36,8 @@ class ProxyServer {
   }
 
   request(url, proxyResponse) {
-    https
+    this
+      .agent
       .get(url, requestResponse => {
         requestResponse.on('data', chunk => proxyResponse.write(chunk.toString()));
         requestResponse.on('end', () => proxyResponse.end());
